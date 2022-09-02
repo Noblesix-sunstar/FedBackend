@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.seu.mapper.TrainingMapper">
+
+
+    <select id="getTrainingList" resultType="com.example.seu.pojo.Training">
+        select * from cmcc.fedtrain
+    </select>
+    <select id="getTrainingById" parameterType="int" resultType="com.example.seu.pojo.Training">
+        select * from cmcc.fedtrain where id = #{id}
+    </select>
+    <insert id="addTraining" parameterType="com.example.seu.pojo.Training">
+        insert into cmcc.fedtrain (id, startTime, dataset, model, clientNum, sampleNum) values (#{id},#{startTime},#{dataset},#{model},#{clientNum},#{sampleNum})
+    </insert>
+    <update id="updateTraining" parameterType="com.example.seu.pojo.Training">
+        update cmcc.fedtrain set endTime=#{endTime}, acc=#{acc}, loss=#{loss} where id = #{id}
+    </update>
+    <delete id="deleteTraining" parameterType="int">
+        delete from cmcc.fedtrain where id = #{id}
+    </delete>
+</mapper>
