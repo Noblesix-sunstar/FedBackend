@@ -8,18 +8,18 @@
 
 
     <select id="getTrainingList" resultType="com.example.seu.pojo.Training">
-        select * from cmcc.fedtrain
+        select * from cmcc.Fed
     </select>
     <select id="getTrainingById" parameterType="int" resultType="com.example.seu.pojo.Training">
-        select * from cmcc.fedtrain where id = #{id}
+        select * from cmcc.Fed where id = #{id}
     </select>
     <insert id="addTraining" parameterType="com.example.seu.pojo.Training">
-        insert into cmcc.fedtrain (id, startTime, dataset, model, clientNum, sampleNum) values (#{id},#{startTime},#{dataset},#{model},#{clientNum},#{sampleNum})
+        insert into cmcc.Fed (id, startTime, dataset, model, clientNum, sampleNum, totalRound) values (#{id},#{startTime},#{dataset},#{model},#{clientNum},#{sampleNum},#{totalRound})
     </insert>
-    <update id="updateTraining" parameterType="com.example.seu.pojo.UpdateParam">
-        update cmcc.fedtrain set endTime=#{endTime}, acc=#{acc}, loss=#{loss} where id = #{id}
+    <update id="updateTraining" parameterType="com.example.seu.pojo.Training">
+        update cmcc.Fed set endTime=#{endTime}, acc=#{acc}, loss=#{loss}, currentRound=#{currentRound} where id = #{id}
     </update>
     <delete id="deleteTraining" parameterType="int">
-        delete from cmcc.fedtrain where id = #{id}
+        delete from cmcc.Fed where id = #{id}
     </delete>
 </mapper>

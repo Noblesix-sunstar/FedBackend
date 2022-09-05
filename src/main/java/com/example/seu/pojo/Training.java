@@ -19,6 +19,10 @@ public class Training {
 
     private double loss;
 
+    private int currentRound;
+
+    private int totalRound;
+
     public Training(){
     }
 
@@ -83,6 +87,18 @@ public class Training {
         this.endTime = endTime;
     }
 
+    public void setCurrentRound(int currentRound) {
+        this.currentRound = currentRound;
+    }
+
+    public int getCurrentRound() {
+        return currentRound;
+    }
+
+    public int getTotalRound() {
+        return totalRound;
+    }
+
     @Override
     public String toString() {
         return "Training{" +
@@ -95,6 +111,8 @@ public class Training {
                 ", sample='" + sampleNum + '\'' +
                 ", acc='" + acc + '\'' +
                 ", loss='" + loss + '\'' +
+                ", currentRound='" + currentRound + '\'' +
+                ", totalRound='" + totalRound + '\'' +
                 '}';
     }
 }
