@@ -23,6 +23,8 @@ public class Training {
 
     private int totalRound;
 
+    private String algorithm;
+
     public Training(){
     }
 

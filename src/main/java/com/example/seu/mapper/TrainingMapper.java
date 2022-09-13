@@ -8,10 +8,14 @@ import java.util.List;
 @Mapper
 public interface TrainingMapper {
     List<Training> getTrainingList();
+    List<Training> getTrainList();
+    List<Training> getNotTrainList();
     Training getTrainingById(int id);
 //    查
 
     int addTraining(Training training);
+    int addFedNotTrain(Training training);
+    int addFedTrain(Training training);
 //    增
 
     int updateTraining(Training t);

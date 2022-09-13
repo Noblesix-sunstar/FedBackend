@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
+@RequestMapping("/api/FedController")
 public class TrainingController {
     @Autowired
     private TrainingMapper trainingMapper;
@@ -24,6 +26,26 @@ public class TrainingController {
     @GetMapping("queryTrainingList")
     public List<Training> queryTrainingList(){
         List<Training> trainingList = trainingMapper.getTrainingList();
+
+        for(Training training:trainingList){
+            System.out.println(training);
+        }
+        return trainingList;
+    }
+
+    @GetMapping("queryTrainList")
+    public List<Training> queryTrainList(){
+        List<Training> trainingList = trainingMapper.getTrainList();
+
+        for(Training training:trainingList){
+            System.out.println(training);
+        }
+        return trainingList;
+    }
+
+    @GetMapping("queryNotTrainList")
+    public List<Training> queryNotTrainList(){
+        List<Training> trainingList = trainingMapper.getNotTrainList();
 
         for(Training training:trainingList){
             System.out.println(training);
@@ -52,6 +74,28 @@ public class TrainingController {
            return "fail";
        }
    }
+
+    @PostMapping(value = "addFedNotTrain",produces = "application/json;charset=UTF-8")
+    public String addFedNotTrain(@RequestBody Training training){
+        int res = trainingMapper.addFedNotTrain(training);
+        if(res>0){
+            return "success";
+        }
+        else{
+            return "fail";
+        }
+    }
+
+    @PostMapping(value = "addFedTrain",produces = "application/json;charset=UTF-8")
+    public String addFedTrain(@RequestBody Training training){
+        int res = trainingMapper.addFedTrain(training);
+        if(res>0){
+            return "success";
+        }
+        else{
+            return "fail";
+        }
+    }
 
    @PostMapping(value = "updateTraining",produces = "application/json;charset=UTF-8")
     public String updateTraining(@RequestBody Training t){

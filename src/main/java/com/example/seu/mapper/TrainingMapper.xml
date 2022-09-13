@@ -10,11 +10,23 @@
     <select id="getTrainingList" resultType="com.example.seu.pojo.Training">
         select * from cmcc.Fed
     </select>
+    <select id="getTrainList" resultType="com.example.seu.pojo.Training">
+        select * from cmcc.FedTrain
+    </select>
+    <select id="getNotTrainList" resultType="com.example.seu.pojo.Training">
+        select * from cmcc.FedNotTrain
+    </select>
     <select id="getTrainingById" parameterType="int" resultType="com.example.seu.pojo.Training">
         select * from cmcc.Fed where id = #{id}
     </select>
     <insert id="addTraining" parameterType="com.example.seu.pojo.Training">
         insert into cmcc.Fed (id, startTime, dataset, model, clientNum, sampleNum, totalRound) values (#{id},#{startTime},#{dataset},#{model},#{clientNum},#{sampleNum},#{totalRound})
+    </insert>
+    <insert id="addFedNotTrain" parameterType="com.example.seu.pojo.Training">
+        insert into cmcc.FedNotTrain (id, startTime, dataset, model, clientNum, sampleNum, totalRound) values (#{id},#{startTime},#{dataset},#{model},#{clientNum},#{sampleNum},#{totalRound})
+    </insert>
+    <insert id="addFedTrain" parameterType="com.example.seu.pojo.Training">
+        insert into cmcc.FedTrain (id, startTime, endTime, dataset, model, clientNum, sampleNum, acc, loss, currentRound, totalRound) values (#{id},#{startTime},#{endTime},#{dataset},#{model},#{clientNum},#{sampleNum},#{acc},#{loss},#{currentRound},#{totalRound})
     </insert>
     <update id="updateTraining" parameterType="com.example.seu.pojo.UpdateParam">
         update cmcc.Fed set endTime=#{endTime}, acc=#{acc}, loss=#{loss}, currentRound=#{currentRound} where id = #{id}
