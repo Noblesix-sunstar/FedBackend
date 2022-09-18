@@ -21,6 +21,8 @@ public interface TrainingMapper {
     int updateTraining(Training t);
 //    改
 
+    int deleteFedNotTrain(int id);
+    int deleteFedTrain(int id);
     int deleteTraining(int id);
 //    删
 }

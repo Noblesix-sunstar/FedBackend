@@ -34,4 +34,10 @@
     <delete id="deleteTraining" parameterType="int">
         delete from cmcc.Fed where id = #{id}
     </delete>
+    <delete id="deleteFedNotTrain" parameterType="int">
+        delete from cmcc.FedNotTrain where id = #{id}
+    </delete>
+    <delete id="deleteFedTrain" parameterType="int">
+        delete from cmcc.FedTrain where id = #{id}
+    </delete>
 </mapper>

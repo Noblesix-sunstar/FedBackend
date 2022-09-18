@@ -64,6 +64,28 @@ public class TrainingController {
         }
     }
 
+    @PostMapping("deleteFedTrain")
+    public  String deleteFedTrain(@RequestParam("id") int id){
+        int res=trainingMapper.deleteFedTrain(id);
+        if(res>0){
+            return "success";
+        }
+        else{
+            return "fail";
+        }
+    }
+
+    @PostMapping("deleteFedNotTrain")
+    public  String deleteFedNotTrain(@RequestParam("id") int id){
+        int res=trainingMapper.deleteFedNotTrain(id);
+        if(res>0){
+            return "success";
+        }
+        else{
+            return "fail";
+        }
+    }
+
    @PostMapping(value = "addTraining",produces = "application/json;charset=UTF-8")
     public String addTraining(@RequestBody Training training){
         int res = trainingMapper.addTraining(training);
